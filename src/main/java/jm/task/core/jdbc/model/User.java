@@ -1,12 +1,13 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Table
+import javax.persistence.*;
+
+@Entity
+@Table(name = "User")
 public class User {
+
+   // static final String PERSISTANCE_NAME = "USER";
     @Id
     @GeneratedValue
     private Long id;
