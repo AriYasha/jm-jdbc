@@ -3,8 +3,10 @@ package jm.task.core.jdbc.dao;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -14,23 +16,29 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.createSQLQuery("CREATE TABLE IF NOT EXISTS User(\n" +
+        String createTable = "CREATE TABLE IF NOT EXISTS User(\n" +
                 "  Id   BIGINT NOT NULL AUTO_INCREMENT,\n" +
                 "  Name VARCHAR (20)     NOT NULL,\n" +
                 "  LastName VARCHAR (20) NOT NULL,\n" +
                 "  Age  TINYINT              NOT NULL,\n" +
                 "  PRIMARY KEY (Id)\n" +
-                ");").executeUpdate();
+                ");";
+        Session session = Util.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        Query query = session.createSQLQuery(createTable).addEntity(User.class);
+        query.executeUpdate();
+        tx1.commit();
+        session.close();
 
     }
 
     @Override
     public void dropUsersTable() {
+        String drop = "DROP TABLE IF EXISTS User;";
         Session session = Util.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.createSQLQuery("DROP TABLE IF EXISTS user").executeUpdate();
+        Query query = session.createSQLQuery(drop).addEntity(User.class);
+        query.executeUpdate();
         tx1.commit();
         session.close();
 
