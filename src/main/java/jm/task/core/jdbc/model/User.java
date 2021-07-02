@@ -2,14 +2,23 @@ package jm.task.core.jdbc.model;
 
 
 import javax.persistence.*;
+<<<<<<< HEAD
+import java.io.Serializable;
+
+@Entity
+@Table(name = "User")
+public class User implements Serializable {
+
+=======
 
 @Entity
 @Table(name = "User")
 public class User {
 
    // static final String PERSISTANCE_NAME = "USER";
+>>>>>>> 94fb0aaa75591dc62a409f98582c871913a8fa7a
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

@@ -2,6 +2,11 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
+<<<<<<< HEAD
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
+=======
+>>>>>>> 94fb0aaa75591dc62a409f98582c871913a8fa7a
 
 import java.util.List;
 
@@ -37,7 +42,19 @@ public class Main {
        // List<User> userList = userDaoHibernate.getAllUsers();
         //System.out.println(userList.toString());
 
+<<<<<<< HEAD
+        UserService userHibernate = new UserServiceImpl();
+        userHibernate.createUsersTable();
+        userHibernate.saveUser("karin","bubkin",(byte)56);
+        userHibernate.saveUser("bonya","pupkin",(byte)56);
+        userHibernate.saveUser("lesya","ivanova",(byte)45);
+        userHibernate.saveUser("luda","petrova",(byte)65);
+        userHibernate.getAllUsers();
+        userHibernate.cleanUsersTable();
+        userHibernate.dropUsersTable();
+=======
 
 
+>>>>>>> 94fb0aaa75591dc62a409f98582c871913a8fa7a
     }
 }

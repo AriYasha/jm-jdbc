@@ -55,7 +55,11 @@ public class Util {
     }
 
     public static SessionFactory getSessionFactory() {
+<<<<<<< HEAD
+        if (sessionFactory == null || sessionFactory.isClosed()) {
+=======
         if (sessionFactory == null) {
+>>>>>>> 94fb0aaa75591dc62a409f98582c871913a8fa7a
             try {
                 Configuration configuration = new Configuration();
 
@@ -67,7 +71,11 @@ public class Util {
                 settings.put(Environment.PASS, "1234");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 
+<<<<<<< HEAD
+                settings.put(Environment.SHOW_SQL, "false");
+=======
                 settings.put(Environment.SHOW_SQL, "true");
+>>>>>>> 94fb0aaa75591dc62a409f98582c871913a8fa7a
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
